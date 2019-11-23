@@ -79,12 +79,16 @@ export const enum ErrorCodes {
   X_V_SLOT_DUPLICATE_SLOT_NAMES,
   X_V_SLOT_EXTRANEOUS_NON_SLOT_CHILDREN,
   X_V_SLOT_MISPLACED,
+  X_V_MODEL_NO_EXPRESSION,
+  X_V_MODEL_MALFORMED_EXPRESSION,
+  X_V_MODEL_ON_SCOPE_VARIABLE,
+  X_INVALID_EXPRESSION,
 
   // generic errors
   X_PREFIX_ID_NOT_SUPPORTED,
   X_MODULE_MODE_NOT_SUPPORTED,
 
-  // Sepcial value for higher-order compilers to pick up the last code
+  // Special value for higher-order compilers to pick up the last code
   // to avoid collision of error codes. This should always be kept as the last
   // item.
   __EXTEND_POINT__
@@ -167,6 +171,10 @@ export const errorMessages: { [code: number]: string } = {
     `Extraneous children found when component has explicit slots. ` +
     `These children will be ignored.`,
   [ErrorCodes.X_V_SLOT_MISPLACED]: `v-slot can only be used on components or <template> tags.`,
+  [ErrorCodes.X_V_MODEL_NO_EXPRESSION]: `v-model is missing expression.`,
+  [ErrorCodes.X_V_MODEL_MALFORMED_EXPRESSION]: `v-model value must be a valid JavaScript member expression.`,
+  [ErrorCodes.X_V_MODEL_ON_SCOPE_VARIABLE]: `v-model cannot be used on v-for or v-slot scope variables because they are not writable.`,
+  [ErrorCodes.X_INVALID_EXPRESSION]: `Invalid JavaScript expression.`,
 
   // generic errors
   [ErrorCodes.X_PREFIX_ID_NOT_SUPPORTED]: `"prefixIdentifiers" option is not supported in this build of compiler.`,
